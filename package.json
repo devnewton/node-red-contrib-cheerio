@@ -1,0 +1,21 @@
+{
+  "name": "node-red-contrib-cheerio",
+  "version": "1.0.0",
+  "keywords": [
+    "util",
+    "functional",
+    "server",
+    "client",
+    "browser"
+  ],
+  "author": "devnewton",
+  "contributors": [],
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.2"
+  },
+  "node-red": {
+    "nodes": {
+      "cheerio": "cheerio.js"
+    }
+  }
+}

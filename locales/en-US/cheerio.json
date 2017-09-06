@@ -1,0 +1,17 @@
+{
+    "cheerio": {
+        "label": {
+            "select": "Root selector",
+            "output": "Output"
+        },
+        "output": {
+            "html": "html content of the elements",
+            "text": "text content of the elements",
+            "object": "map to objects"
+        },
+        "format": {
+            "single": "as a single message containing an array",
+            "multi": "as multiple messages, one for each element"
+        }
+    }
+}
