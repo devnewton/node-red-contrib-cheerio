@@ -7,6 +7,14 @@ module.exports = function (RED) {
         this.ret = n.ret || "html";
         this.as = n.as || "single";
         this.map = n.map || [];
+        this.parseOptions = {
+            xmlMode: n.xmlMode,
+            decodeEntities: n.decodeEntities,
+            lowerCaseTags: n.lowerCaseTags,
+            lowerCaseAttributeNames: n.lowerCaseAttributeNames,
+            recognizeCDATA: n.recognizeCDATA,
+            recognizeSelfClosing: n.recognizeSelfClosing
+        };
         var node = this;
         this.on("input", function (msg) {
             if (msg.hasOwnProperty("payload")) {
@@ -15,7 +23,7 @@ module.exports = function (RED) {
                     tag = node.tag || msg.select;
                 }
                 try {
-                    var $ = cheerio.load(msg.payload);
+                    var $ = cheerio.load(msg.payload, node.parseOptions);
                     var payloads = [];
                     $(tag).each(function () {
                         var payload = null;
@@ -65,7 +73,7 @@ module.exports = function (RED) {
                 }
             } else {
                 node.send(msg);
-            } // If no payload - just pass it on.
+            }
         });
     }
     RED.nodes.registerType("cheerio", CheerioNode);

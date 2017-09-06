@@ -19,6 +19,19 @@
         </select>
     </div>
     <div class="form-row">
+        <input id="node-input-xmlMode" type="checkbox" style="width: auto; vertical-align: top;">
+        <label for="node-input-xmlMode" style="width: auto;">XML mode</label>
+        <input id="node-input-decodeEntities" type="checkbox" style="width: auto; vertical-align: top;">
+        <label for="node-input-decodeEntities" style="width: auto;">Decode entities</label>
+        <input id="node-input-lowerCaseTags" type="checkbox" style="width: auto; vertical-align: top;">
+        <label for="node-input-lowerCaseTags" style="width: auto;">Lower case tags</label>
+        <input id="node-input-lowerCaseAttributeNames" type="checkbox" style="width: auto; vertical-align: top;">
+        <label for="node-input-lowerCaseAttributeNames" style="width: auto;">Lower attribute names</label>
+        <input id="node-input-recognizeCDATA" type="checkbox" style="width: auto; vertical-align: top;">
+        <label for="node-input-recognizeCDATA" style="width: auto;">Recognize CDATA</label>
+    </div>
+    
+    <div class="form-row">
         <div id="node-input-mapping-container-div" style="border-radius: 5px; height: 320px; padding: 5px; border: 1px solid #ccc; overflow-y:scroll;">
         <ol id="node-input-mapping-container" style=" list-style-type:none; margin: 0;">
         </ol>
@@ -62,7 +75,13 @@
             tag: {value: ""},
             ret: {value: "html"},
             as: {value: "single"},
-            map: {value:[{search:"",replace:"", ret: "html", attr: ""}]}
+            map: {value:[{search:"",replace:"", ret: "html", attr: ""}]},
+            xmlMode: {value: false},
+            decodeEntities: {value: false},
+            lowerCaseTags: {value: false},
+            lowerCaseAttributeNames: {value: false},
+            recognizeCDATA: {value: false},
+            recognizeSelfClosing: {value: false}
         },
         inputs: 1,
         outputs: 1,
