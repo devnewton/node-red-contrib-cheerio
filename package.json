@@ -2,12 +2,11 @@
   "name": "node-red-contrib-cheerio",
   "version": "1.0.0",
   "keywords": [
-    "util",
-    "functional",
-    "server",
-    "client",
-    "browser"
+    "xml",
+    "html",
+    "node-red"
   ],
+  "homepage": "https://github.com/devnewton/node-red-contrib-cheerio",
   "author": "devnewton",
   "contributors": [],
   "dependencies": {
