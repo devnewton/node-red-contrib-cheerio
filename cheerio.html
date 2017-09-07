@@ -1,21 +1,21 @@
 <script type="text/x-red" data-template-name="cheerio">
     <div class="form-row">
-        <label for="node-input-tag"><i class="fa fa-filter"></i> <span data-i18n="cheerio.label.select"></span></label>
-        <input type="text" id="node-input-tag" placeholder="h1">
+        <label for="node-input-tag"><i class="fa fa-filter"></i> Selector</label>
+        <input type="text" id="node-input-tag" placeholder="h1" title="Elements selector">
     </div>
     <div class="form-row">
-        <label for="node-input-ret"><i class="fa fa-sign-out"></i> <span data-i18n="cheerio.label.output"></span></label>
+        <label for="node-input-ret"><i class="fa fa-sign-out"></i> Output</span></label>
         <select id="node-input-ret" style="width:70%">
-            <option value="html" data-i18n="cheerio.output.html"></option>
-            <option value="text" data-i18n="cheerio.output.text"></option>
-            <option value="object" data-i18n="cheerio.output.object"></option>
+            <option value="html">html</option>
+            <option value="text">text</option>
+            <option value="object">map to objects</option>
         </select>
     </div>
     <div class="form-row">
         <label for="node-input-as">&nbsp;</label>
         <select id="node-input-as" style="width:70%">
-            <option value="single" data-i18n="cheerio.format.single"></option>
-            <option value="multi" data-i18n="cheerio.format.multi"></option>
+            <option value="single">as a single message containing an array</option>
+            <option value="multi">as multiple messages, one for each element</option>
         </select>
     </div>
     <div class="form-row">
@@ -40,8 +40,8 @@
     </div>
     <br/>
     <div class="form-row">
-        <label for="node-input-name"><i class="fa fa-tag"></i> <span data-i18n="common.label.name"></span></label>
-        <input type="text" id="node-input-name" style="width:70%" data-i18n="[placeholder]common.label.name">
+        <label for="node-input-name"><i class="fa fa-tag"></i> Name</label>
+        <input type="text" id="node-input-name" style="width:70%" placeholder="name">
     </div>
 </script>
 
@@ -51,8 +51,6 @@
     <dl class="message-properties">
         <dt>payload <span class="property-type">string</span></dt>
         <dd>the html string from which to extract elements.</dd>
-        <dt class="optional">select <span class="property-type">string</span></dt>
-        <dd>if not configured in the edit panel the selector can be set as a property of msg.</dd>
     </dl>
     <h3>Output</h3>
     <dl class="message-properties">
@@ -64,6 +62,7 @@
     <p>This node supports a combination of CSS and jQuery selectors. See the
     <a href="https://github.com/fb55/CSSselect#user-content-supported-selectors" target="_blank">css-select documentation</a> for more information
     on the supported syntax.</p>
+     <p>Output can be plain text, html or complex mapping to objects using sub selectors.</p>
 </script>
 
 <script type="text/javascript">
@@ -97,12 +96,12 @@
             function generateRow(mapping) {
                 var container = $('<li/>',{style:"margin:0; padding:8px 0px; border-bottom: 1px solid #ccc;"});
                 var row = $('<div/>').appendTo(container);
-                var searchField = $('<input/>',{class:"node-input-mapping-search",type:"text",style:"margin-left: 5px; width: 25%;",placeholder:"Search", title:"Selector"}).appendTo(row);
+                var searchField = $('<input/>',{class:"node-input-mapping-search",type:"text",style:"margin-left: 5px; width: 20%;",placeholder:"Selector", title:"Sub elements selector"}).appendTo(row);
                 var retField = $('<select></select>',{class:"node-input-mapping-ret",style:"margin-left: 5px; width: 20%;", title:"Return"}).appendTo(row);
                 $('<option value="text">text</option><option value="html">html</option><option value="attribute">attribute</option>').appendTo(retField);
-                var attrField = $('<input/>',{class:"node-input-mapping-attr",type:"text",style:"margin-left: 5px; width: 10%;",placeholder:"attribute", title:"Attribute"}).appendTo(row);
+                var attrField = $('<input/>',{class:"node-input-mapping-attr",type:"text",style:"margin-left: 5px; width: 20%;",placeholder:"Attribute", title:"Attribute name"}).appendTo(row);
                 $('<span/>',{class:"fa fa-arrow-right",style:"margin: 5px"}).appendTo(row);
-                var replaceField = $('<input/>',{class:"node-input-mapping-replace",type:"text",style:"width: 25%;",placeholder:"Replace", title: 'Output field'}).appendTo(row);
+                var replaceField = $('<input/>',{class:"node-input-mapping-replace",type:"text",style:"width: 20%;",placeholder:"Field", title: 'Output field'}).appendTo(row);
                 searchField.val(mapping.search);
                 retField.val(mapping.ret);
                 attrField.val(mapping.attr);
