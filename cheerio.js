@@ -19,9 +19,6 @@ module.exports = function (RED) {
         this.on("input", function (msg) {
             if (msg.hasOwnProperty("payload")) {
                 var tag = node.tag;
-                if (msg.hasOwnProperty("select")) {
-                    tag = node.tag || msg.select;
-                }
                 try {
                     var $ = cheerio.load(msg.payload, node.parseOptions);
                     var payloads = [];
